@@ -7,6 +7,7 @@ require 'vendor/autoload.php';
 Flight::register('db', 'PDO', 
 array('mysql:host=localhost;dbname=lab3_db','root',''));
 
+
 Flight::route('GET /api/users', function(){
     $users = Flight::db()->query('SELECT * FROM Users', PDO::FETCH_ASSOC)->fetchAll();
     //var_dump($users);
@@ -20,7 +21,7 @@ Flight::route('GET /api/usersid', function(){
 });
 
 Flight::route('GET /api/usersid/@id', function($id){
-    $servername = "localhost";
+   /* $servername = "localhost";
     $username = "root";
     $password = "";
     $schema = "lab3_db";
@@ -34,10 +35,10 @@ Flight::route('GET /api/usersid/@id', function($id){
       * This endpoint should return output in JSON format
       */
   
-      $stmt = $conn->prepare("SELECT * FROM Users where id = $id");
+      /*$stmt = $conn->prepare("SELECT * FROM Users where id = $id");
       $stmt->execute();
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      Flight::json(reset($result));
+      Flight::json(reset($result));*/
 });
 
 Flight::start();
